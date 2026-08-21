@@ -16,13 +16,14 @@ export const Nav = () => {
 
         <ul className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="group">
               <a
                 href={link.href}
                 className="text-sm text-muted transition-colors hover:text-text"
               >
                 {link.label}
               </a>
+              <span className="mt-1 w-0 h-1 group-hover:w-6 bg-white rounded-md"></span>
             </li>
           ))}
         </ul>

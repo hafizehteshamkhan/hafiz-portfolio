@@ -17,7 +17,7 @@ export const Experience = () => {
         <p className="mt-1 text-sm text-muted">
           World Business Software Solutions · Karachi, Pakistan
         </p>
-        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted md:text-base">
+        <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
           Developing and maintaining modern, responsive, and user-friendly
           web applications using Remix and Tailwind CSS. Responsible for
           transforming UI/UX designs into high-quality interfaces, building
