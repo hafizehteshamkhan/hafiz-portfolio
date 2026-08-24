@@ -33,3 +33,7 @@ body {
 .card {
   @apply bg-surface border border-border rounded-xl;
 }
+
+.container {
+  @apply mx-auto max-w-6xl px-6;
+}

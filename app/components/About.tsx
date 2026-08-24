@@ -1,6 +1,6 @@
 export const About = () => {
   return (
-    <section id="about" className="mx-auto max-w-6xl px-6 py-20">
+    <section id="about" className="container py-20">
       <div className="grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p className="eyebrow mb-3">01 — About</p>
@@ -12,7 +12,7 @@ export const About = () => {
             creating highly responsive websites that look great on all devices.
           </p>
 
-          <div className="mt-8 grid max-w-md grid-cols-3 gap-4">
+          <div className="mt-8 grid max-w-md grid-cols-2 sm:grid-cols-3 gap-4">
             <div className="card px-4 py-4 text-center">
               <p className="font-display text-2xl font-semibold text-accent2">
                 5+
@@ -25,7 +25,7 @@ export const About = () => {
               </p>
               <p className="mt-1 text-xs text-muted">Core Skills</p>
             </div>
-            <div className="card px-4 py-4 text-center">
+            <div className="card px-4 py-4 text-center col-span-2 sm:col-span-1">
               <p className="font-display text-2xl font-semibold text-accent2">
                 100%
               </p>

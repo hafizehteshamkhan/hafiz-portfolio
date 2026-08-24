@@ -2,7 +2,7 @@ import image from "~/assets/images/dev-image.png"
 
 export const  Hero = () => {
   return (
-    <section id="top" className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:pt-24">
+    <section id="top" className="pb-20 pt-16 md:pt-24">
       <div className="grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p className="eyebrow mb-4">Front-End Developer</p>

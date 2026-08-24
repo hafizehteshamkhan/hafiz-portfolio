@@ -1,6 +1,6 @@
 export const Experience = () => {
   return (
-    <section id="experience" className="mx-auto max-w-6xl px-6 py-20">
+    <section id="experience" className="container py-20">
       <p className="eyebrow mb-3">03 — Experience</p>
       <h2 className="section-title mb-10">Where I've Worked</h2>
 

@@ -26,9 +26,9 @@ const projects = [
   },
 ];
 
-export default function Projects() {
+export const Projects = () => {
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
+    <section id="projects" className="container py-20">
       <p className="eyebrow mb-3">04 — Projects</p>
       <h2 className="section-title mb-10">Live Projects</h2>
 
