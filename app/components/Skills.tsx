@@ -15,11 +15,11 @@ export const Skills = () => {
       <p className="eyebrow mb-3">02 — Skills</p>
       <h2 className="section-title mb-10">What I Work With</h2>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="grid grid-cols-2 sm:flex flex-wrap gap-3">
         {skills.map((skill) => (
           <span
             key={skill}
-            className="max-w-[186px] text-center w-full card px-4 sm:px-5 py-2.5 font-mono text-sm text-text transition-colors hover:border-accent2/50 hover:text-accent2"
+            className="sm:max-w-[186px] text-center w-full card px-3.25 sm:px-5 py-2.5 font-mono text-sm text-text transition-colors hover:border-accent2/50 hover:text-accent2"
           >
             {skill}
           </span>
