@@ -56,7 +56,7 @@ export const Contact = () => {
         </div>
 
         {/* Right: contact form */}
-        <form onSubmit={handleSubmit} className="card space-y-5 p-6 md:p-8">
+        <form onSubmit={handleSubmit} className="card space-y-5 p-5 sm:p-6 md:p-8">
           <div>
             <label
               htmlFor="name"

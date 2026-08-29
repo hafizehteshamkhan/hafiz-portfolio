@@ -24,6 +24,11 @@ const projects = [
     link: "https://www.b2bmobilewholesalers.com/",
     desc: "A modern B2B wholesale platform for mobile phones and consumer electronics, featuring product categories, wholesale stock, trade services, and a responsive experience for business buyers.",
   },
+  {
+    name: "Sell Any Mobile",
+    link: "https://www.sellanymobile.co.uk/",
+    desc: "A UK-based device price comparison platform that lets users compare live offers from 30+ verified recyclers to sell phones, tablets, smartwatches and laptops for the best price.",
+  },
 ];
 
 export const Projects = () => {
@@ -57,4 +62,4 @@ export const Projects = () => {
       </div>
     </section>
   );
-}
+};
