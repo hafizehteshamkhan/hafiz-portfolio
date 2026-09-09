@@ -1,10 +1,5 @@
 const projects = [
   {
-    name: "Compare a Price",
-    link: "https://www.compareaprice.co.uk/",
-    desc: "A price comparison platform helping users find the best deals across multiple services with a clean and responsive UI.",
-  },
-  {
     name: "World Business Software Solutions",
     link: "https://www.worldsoftwares.com/",
     desc: "A professional business website showcasing software solutions with a modern layout and user-friendly design.",
