@@ -60,7 +60,7 @@ export const Contact = () => {
           <div>
             <label
               htmlFor="name"
-              className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted"
+              className="mb-2 block text-xs font-medium uppercase tracking-wide text-[#bebbbb]"
             >
               Name
             </label>
@@ -78,7 +78,7 @@ export const Contact = () => {
           <div>
             <label
               htmlFor="email"
-              className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted"
+              className="mb-2 block text-xs font-medium uppercase tracking-wide text-[#bebbbb]"
             >
               Email
             </label>
@@ -96,7 +96,7 @@ export const Contact = () => {
           <div>
             <label
               htmlFor="message"
-              className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted"
+              className="mb-2 block text-xs font-medium uppercase tracking-wide text-[#bebbbb]"
             >
               Message
             </label>
