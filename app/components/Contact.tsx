@@ -1,20 +1,31 @@
 import { useState, type FormEvent } from "react";
+import type { ActionFunctionArgs } from "@remix-run/node";
+import { Form, useFetcher } from "@remix-run/react";
 
 export const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const fetcher = useFetcher();
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  const [value, setValue] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+
+  const handleChange = (e: { target: { name: any; value: any } }) => {
+    const { name, value } = e.target;
+    setValue((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
-
-    window.location.href = `mailto:ehteshamsheikh598@gmail.com?subject=${subject}&body=${body}`;
-  }
+    setValue({
+      name: "",
+      email: "",
+      message: "",
+    });
+    console.log(value);
+  };
 
   return (
     <section id="contact" className="container py-20">
@@ -25,8 +36,8 @@ export const Contact = () => {
         {/* Left: intro + quick links */}
         <div>
           <p className="max-w-md text-base leading-relaxed text-muted md:text-lg">
-            Have a project in mind or just want to say hi? Fill out the form
-            or reach me directly — my inbox is always open.
+            Have a project in mind or just want to say hi? Fill out the form or
+            reach me directly — my inbox is always open.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
@@ -56,7 +67,12 @@ export const Contact = () => {
         </div>
 
         {/* Right: contact form */}
-        <form onSubmit={handleSubmit} className="card space-y-5 p-5 sm:p-6 md:p-8">
+        <fetcher.Form
+          onSubmit={handleSubmit}
+          className="card space-y-5 p-5 sm:p-6 md:p-8"
+          method="post"
+          action="/api/contact"
+        >
           <div>
             <label
               htmlFor="name"
@@ -66,10 +82,11 @@ export const Contact = () => {
             </label>
             <input
               id="name"
+              name="name"
               type="text"
               required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={value.name}
+              onChange={handleChange}
               placeholder="Your name"
               className="w-full rounded-md border border-border bg-surface2 px-4 py-3 text-sm text-text placeholder:text-muted/60 outline-none transition-colors focus:border-accent2/60"
             />
@@ -84,10 +101,11 @@ export const Contact = () => {
             </label>
             <input
               id="email"
+              name="email"
               type="email"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={value.email}
+              onChange={handleChange}
               placeholder="you@example.com"
               className="w-full rounded-md border border-border bg-surface2 px-4 py-3 text-sm text-text placeholder:text-muted/60 outline-none transition-colors focus:border-accent2/60"
             />
@@ -102,10 +120,11 @@ export const Contact = () => {
             </label>
             <textarea
               id="message"
+              name="message"
               required
               rows={4}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              value={value.message}
+              onChange={handleChange}
               placeholder="Tell me about your project..."
               className="w-full resize-none rounded-md border border-border bg-surface2 px-4 py-3 text-sm text-text placeholder:text-muted/60 outline-none transition-colors focus:border-accent2/60"
             />
@@ -117,11 +136,11 @@ export const Contact = () => {
           >
             Send Message
           </button>
-        </form>
+        </fetcher.Form>
       </div>
     </section>
   );
-}
+};
 
 export const Footer = () => {
   return (
@@ -131,4 +150,4 @@ export const Footer = () => {
       </div>
     </footer>
   );
-}
+};
