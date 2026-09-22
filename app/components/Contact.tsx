@@ -1,31 +1,45 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { Form, useFetcher } from "@remix-run/react";
+import { action } from "~/routes/api.contact";
 
 export const Contact = () => {
-  const fetcher = useFetcher();
-
+  const fetcher = useFetcher<typeof action>();
+  const [showSuccess, setShowSuccess] = useState(false);
   const [value, setValue] = useState({
     name: "",
     email: "",
     message: "",
   });
 
+  useEffect(() => {
+    if (fetcher.state === "idle" && fetcher.data?.success) {
+      setValue({
+        name: "",
+        email: "",
+        message: "",
+      });
+      setShowSuccess(true);
+
+      const timer = setTimeout(() => setShowSuccess(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [fetcher.state , fetcher.data]);
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     setValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    setValue({
-      name: "",
-      email: "",
-      message: "",
-    });
-    console.log(value);
-  };
+  // const handleSubmit = (e: { preventDefault: () => void }) => {
+  //   e.preventDefault();
+  //   setValue({
+  //     name: "",
+  //     email: "",
+  //     message: "",
+  //   });
+  //   console.log(value);
+  // };
 
   return (
     <section id="contact" className="container py-20">
@@ -68,7 +82,7 @@ export const Contact = () => {
 
         {/* Right: contact form */}
         <fetcher.Form
-          onSubmit={handleSubmit}
+          // onSubmit={handleSubmit}
           className="card space-y-5 p-5 sm:p-6 md:p-8"
           method="post"
           action="/api/contact"
@@ -132,10 +146,16 @@ export const Contact = () => {
 
           <button
             type="submit"
-            className="w-full rounded-md bg-accent px-6 py-3 text-sm font-medium text-white shadow-glow transition-transform hover:-translate-y-0.5"
+            disabled={fetcher.state !== "idle"}
+            className="w-full rounded-md bg-accent px-6 py-3 text-sm font-medium text-white shadow-glow transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed"
           >
-            Send Message
+            {fetcher.state !== "idle" ? "Submitting..." : "Send Message"}
           </button>
+          {showSuccess && (
+            <p className="text-sm font-medium text-green-400">
+              ✅ Message sent successfully!
+            </p>
+          )}
         </fetcher.Form>
       </div>
     </section>
